@@ -1,24 +1,86 @@
-<html>
+<!DOCTYPE html>
+<html lang="pt-BR">
+
 <head>
-  <title>Your Website Title</title>
-    <!-- You can use open graph tags to customize link previews.
-    Learn more: https://developers.facebook.com/docs/sharing/webmasters -->
-  <meta property="og:url"           content="https://www.your-domain.com/your-page.html" />
-  <meta property="og:type"          content="website" />
-  <meta property="og:title"         content="Your Website Title" />
-  <meta property="og:description"   content="Your description" />
-  <meta property="og:image"         content="https://www.your-domain.com/path/image.jpg" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Estudos de HTML e JavaScript</title>
+
+    <!-- Open Graph -->
+    <meta property="og:url" content="https://www.your-domain.com/your-page.html">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Estudos de HTML e JavaScript">
+    <meta property="og:description" content="Projeto de estudos utilizando HTML, JavaScript e integração com Facebook SDK.">
+    <meta property="og:image" content="https://www.your-domain.com/path/image.jpg">
 </head>
+
 <body>
 
-  <!-- Load Facebook SDK for JavaScript -->
-  <div id="fb-root"></div>
-<script async defer crossorigin="anonymous" src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v15.0&appId=486862060253320&autoLogAppEvents=1" nonce="Djzv24QF"></script>
+    <h1 id="hora"></h1>
 
+    <script>
+        function atualizarHora() {
+            const d = new Date();
 
-  <!-- Your like button code -->
-  <div class="fb-like" data-href="https://www.facebook.com/pastelariaehamburgueriamundial" data-width="" data-layout="button_count" data-action="like" data-size="large" data-share="false"></div>
+            const hora = String(d.getHours()).padStart(2, '0');
+            const minuto = String(d.getMinutes()).padStart(2, '0');
+            const segundo = String(d.getSeconds()).padStart(2, '0');
 
+            document.getElementById("hora").innerHTML =
+                "Horário atual: " + hora + ":" + minuto + ":" + segundo;
+        }
+
+        atualizarHora();
+
+        // Atualiza o relógio a cada segundo
+        setInterval(atualizarHora, 1000);
+    </script>
+
+    <hr>
+
+    <!-- Facebook SDK -->
+    <div id="fb-root"></div>
+
+    <script async defer crossorigin="anonymous"
+        src="https://connect.facebook.net/pt_BR/sdk.js#xfbml=1&version=v15.0&appId=486862060253320&autoLogAppEvents=1">
+    </script>
+
+    <!-- Botão Curtir -->
+    <div class="fb-like"
+        data-href="https://www.facebook.com/pastelariaehamburgueriamundial"
+        data-width=""
+        data-layout="button_count"
+        data-action="like"
+        data-size="large"
+        data-share="false">
+    </div>
+
+    <br><br>
+
+    <!-- Compartilhar -->
+    <a href="https://www.facebook.com/sharer/sharer.php?u=https://www.facebook.com/pastelariaehamburgueriamundial"
+        target="_blank">
+        <button>Compartilhar no Facebook</button>
+    </a>
+
+    <br><br>
+
+    <!-- Exemplo de formulário -->
+    <form>
+        <label for="mesa">Número da mesa:</label>
+
+        <input
+            type="number"
+            id="mesa"
+            name="mesa"
+            min="1"
+            max="20"
+            placeholder="1 a 20">
+
+        <input type="submit" value="Enviar">
+    </form>
 
 </body>
+
 </html>
